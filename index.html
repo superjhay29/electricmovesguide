@@ -49,6 +49,26 @@
             bottom: 0;
         }
 
+        pre {
+            background-color: #eee;
+            padding: 10px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        .copy-btn {
+            background-color: #4caf50;
+            color: white;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background-color: #45a049;
+        }
+
         @media only screen and (max-width: 600px) {
             header {
                 padding: 10px;
@@ -116,21 +136,31 @@ Security Risks: An unlocked bootloader can potentially expose your device to sec
     <section>
         <h2>How to Unlock Bootloader on Infinix/Tecno Smartphone</h2>
         First open platform-tools/Multi-Platform Tools
-        Then open command promt on the folder
-        type adb reboot bootloader
-      then type fastboot flashing unlock then press volume up.
-      make sure you have oem unlocking and usb debugging on adn some drivers too.
-      and voila, your bootloader is unlocked>
+            Then open command prompt in the folder
+        <pre>
+            <code id="fastbootCode">
+            adb reboot bootloader
+            fastboot flashing unlock then press volume up.
+            </code>
+        </pre>
+        <button class="copy-btn" onclick="copyToClipboard('fastbootCode')">Copy</button>
+        make sure you have OEM unlocking and USB debugging on and some drivers too.
+            and voila, your bootloader is unlocked
     </section>
 
     <section>
         <h2>Steps to Root</h2>
-        Seems like yoe have unlocked the bootloader from the last step.
-      now get you magisk patched boot.img and your vbmeta.img
-      type fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img
-      type fastboot flash boot then drag the magisk patched boot.img onto the command promnt
-      type fastboot reboot
-      viola, youre rooted now. congrats!
+
+           Seems like you have unlocked the bootloader from the last step.
+            now get your Magisk patched boot.img and your vbmeta.img adn follow the commands below
+        <pre>
+            <code id="rootSteps">
+            fastboot --disable-verity --disable-verification flash vbmeta vbmeta.img
+            fastboot flash boot then drag the Magisk patched boot.img onto the command prompt
+            fastboot reboot</code>
+        </pre>
+        <button class="copy-btn" onclick="copyToClipboard('rootSteps')">Copy</button>
+        voila, you're rooted now. congrats!
         <p>Happy rooting! 🚀📱</p>
     </section>
 
@@ -138,6 +168,8 @@ Security Risks: An unlocked bootloader can potentially expose your device to sec
         © 2024 Electric Moves. © 2024 JhayTech.
     </footer>
 
-</body>
-
-</html>
+    <script>
+        function copyToClipboard(elementId) {
+            var copyText = document.getElementById(elementId);
+            var textArea = document.createElement("textarea");
+            textArea.value =
